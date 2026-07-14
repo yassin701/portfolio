@@ -1,9 +1,10 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
+import Image from 'next/image';
 import { useTranslations, useLocale } from 'next-intl';
 import { usePathname, useRouter } from '@/i18n/routing';
-import { Globe, Menu, X } from 'lucide-react';
+import { Globe, Menu, X, ChevronDown } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const navItems = ['home', 'about', 'skills', 'services', 'projects', 'contact'];
@@ -17,6 +18,22 @@ export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
+  const [langOpen, setLangOpen] = useState(false);
+
+  const desktopLangRef = useRef(null);
+  const mobileLangRef = useRef(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      const isDesktopClick = desktopLangRef.current && desktopLangRef.current.contains(event.target);
+      const isMobileClick = mobileLangRef.current && mobileLangRef.current.contains(event.target);
+      if (!isDesktopClick && !isMobileClick) {
+        setLangOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -64,11 +81,18 @@ export default function Header() {
           onClick={(e) => handleNavClick(e, 'home')}
           className="flex items-center gap-2.5 cursor-pointer group"
         >
-          <div className="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center group-hover:bg-blue-500 transition-colors duration-300 shadow-[0_0_15px_rgba(37,99,235,0.4)]">
-            <span className="text-white font-black text-sm">Y</span>
+          <div className="w-8 h-8 rounded-full overflow-hidden border border-white/10 group-hover:border-blue-500 transition-all duration-300 relative shadow-[0_0_15px_rgba(37,99,235,0.2)]">
+            <Image
+              src="/images/profile.jpg"
+              alt="Yassine Hamdoune"
+              fill
+              sizes="32px"
+              className="object-cover"
+              priority
+            />
           </div>
           <span className="text-white font-bold text-base tracking-tight">
-            Yassine<span className="text-blue-400 font-light">.H</span>
+            Yassine Hamdoune
           </span>
         </a>
 
@@ -99,29 +123,50 @@ export default function Header() {
 
         {/* Right controls */}
         <div className="hidden md:flex items-center gap-4">
-          {/* Globe language switcher — original style */}
-          <div className="relative group">
-            <button className="flex items-center gap-2 px-3 py-2 rounded-xl border border-white/8 bg-white/4 backdrop-blur-sm text-sm font-medium text-gray-300 hover:text-white hover:border-white/15 transition-all duration-300 cursor-pointer">
+          {/* Globe language switcher */}
+          <div className="relative" ref={desktopLangRef}>
+            <button 
+              onClick={() => setLangOpen(!langOpen)}
+              className="flex items-center gap-2 px-3.5 py-2 rounded-xl border border-white/8 bg-white/4 backdrop-blur-sm text-sm font-medium text-gray-300 hover:text-white hover:border-white/15 transition-all duration-300 cursor-pointer select-none"
+            >
               <Globe size={15} className="text-blue-400" />
               <span>{currentLanguageLabel[locale]}</span>
+              <ChevronDown 
+                size={14} 
+                className={`text-gray-400 transition-transform duration-300 ${langOpen ? 'rotate-180' : ''}`} 
+              />
             </button>
+            
             {/* Dropdown */}
-            <div className="absolute right-0 top-full mt-2 w-36 rounded-2xl border border-white/8 bg-[#161B22]/95 backdrop-blur-xl p-1.5 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-all duration-300 shadow-2xl shadow-black/50">
-              {['en', 'fr', 'ar'].map((lang) => (
-                <button
-                  key={lang}
-                  onClick={() => handleLanguageChange(lang)}
-                  className={`w-full text-left px-3 py-2.5 rounded-xl text-sm font-medium transition-all duration-200 cursor-pointer ${
-                    locale === lang
-                      ? 'bg-blue-600/20 text-blue-400 font-semibold'
-                      : 'text-gray-400 hover:bg-white/5 hover:text-white'
-                  }`}
-                  style={{ textAlign: lang === 'ar' ? 'right' : 'left' }}
+            <AnimatePresence>
+              {langOpen && (
+                <motion.div 
+                  initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  exit={{ opacity: 0, y: 10, scale: 0.95 }}
+                  transition={{ duration: 0.15 }}
+                  className="absolute right-0 top-full mt-2 w-36 rounded-2xl border border-white/8 bg-[#161B22]/95 backdrop-blur-xl p-1.5 shadow-2xl shadow-black/50 z-50 overflow-hidden"
                 >
-                  {currentLanguageLabel[lang]}
-                </button>
-              ))}
-            </div>
+                  {['en', 'fr', 'ar'].map((lang) => (
+                    <button
+                      key={lang}
+                      onClick={() => {
+                        handleLanguageChange(lang);
+                        setLangOpen(false);
+                      }}
+                      className={`w-full text-left px-3 py-2.5 rounded-xl text-sm font-medium transition-all duration-200 cursor-pointer ${
+                        locale === lang
+                          ? 'bg-blue-600/20 text-blue-400 font-semibold'
+                          : 'text-gray-400 hover:bg-white/5 hover:text-white'
+                      }`}
+                      style={{ textAlign: lang === 'ar' ? 'right' : 'left' }}
+                    >
+                      {currentLanguageLabel[lang]}
+                    </button>
+                  ))}
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
 
           {/* CTA */}
@@ -136,16 +181,51 @@ export default function Header() {
 
         {/* Mobile: globe + hamburger */}
         <div className="flex md:hidden items-center gap-3">
-          {/* Quick language cycle */}
-          <button
-            onClick={() => {
-              const nexts = { en: 'fr', fr: 'ar', ar: 'en' };
-              handleLanguageChange(nexts[locale]);
-            }}
-            className="p-2 rounded-xl border border-white/8 bg-white/4 text-gray-400 hover:text-white transition-colors cursor-pointer"
-          >
-            <Globe size={17} className="text-blue-400" />
-          </button>
+          {/* Globe language dropdown */}
+          <div className="relative" ref={mobileLangRef}>
+            <button
+              onClick={() => setLangOpen(!langOpen)}
+              className="flex items-center gap-1.5 px-3 py-2 rounded-xl border border-white/8 bg-white/4 text-gray-300 hover:text-white transition-colors cursor-pointer select-none"
+            >
+              <Globe size={15} className="text-blue-400" />
+              <span className="text-xs font-semibold uppercase">{locale}</span>
+              <ChevronDown 
+                size={12} 
+                className={`text-gray-400 transition-transform duration-300 ${langOpen ? 'rotate-180' : ''}`} 
+              />
+            </button>
+
+            {/* Dropdown */}
+            <AnimatePresence>
+              {langOpen && (
+                <motion.div 
+                  initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  exit={{ opacity: 0, y: 10, scale: 0.95 }}
+                  transition={{ duration: 0.15 }}
+                  className="absolute right-0 top-full mt-2 w-32 rounded-2xl border border-white/8 bg-[#161B22]/95 backdrop-blur-xl p-1.5 shadow-2xl shadow-black/50 z-50 overflow-hidden"
+                >
+                  {['en', 'fr', 'ar'].map((lang) => (
+                    <button
+                      key={lang}
+                      onClick={() => {
+                        handleLanguageChange(lang);
+                        setLangOpen(false);
+                      }}
+                      className={`w-full text-left px-3 py-2 rounded-xl text-xs font-medium transition-all duration-200 cursor-pointer ${
+                        locale === lang
+                          ? 'bg-blue-600/20 text-blue-400 font-semibold'
+                          : 'text-gray-400 hover:bg-white/5 hover:text-white'
+                      }`}
+                      style={{ textAlign: lang === 'ar' ? 'right' : 'left' }}
+                    >
+                      {currentLanguageLabel[lang]}
+                    </button>
+                  ))}
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
 
           <button
             onClick={() => setIsOpen(!isOpen)}
