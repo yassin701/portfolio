@@ -23,68 +23,69 @@ export default function Footer() {
     { code: 'ar', label: 'العربية' }
   ];
 
-  return (
-    <footer className="border-t border-gray-900 bg-dark-bg/60 py-12">
-      <div className="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-8">
-        
-        {/* Left: Branding & Tagline */}
-        <div className="flex flex-col items-center md:items-start text-center md:text-left gap-2">
-          <span className="text-base font-bold text-white tracking-wide">
-            Yassine<span className="text-accent">.H</span>
-          </span>
-          <p className="text-xs text-gray-500 font-normal">
-            {t('tagline')}
-          </p>
-        </div>
+  const socials = [
+    { icon: <GithubIcon size={16} />, href: 'https://github.com/yassin701', label: 'GitHub' },
+    { icon: <LinkedinIcon size={16} />, href: 'https://www.linkedin.com/in/yassine-hamdoune-143526226/', label: 'LinkedIn' },
+    { icon: <Mail size={16} />, href: 'mailto:yassinehamdoune55@gmail.com', label: 'Email' },
+  ];
 
-        {/* Center: Language Switcher Text Links */}
-        <div className="flex items-center gap-4 text-xs font-semibold text-gray-500">
-          {languages.map((lang, idx) => (
-            <div key={lang.code} className="flex items-center gap-4">
+  return (
+    <footer className="relative border-t border-white/6 bg-[#0B0F19]">
+      <div className="max-w-6xl mx-auto px-6 lg:px-12 py-10">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+
+          {/* Left: Brand */}
+          <div className="flex flex-col items-center md:items-start gap-1">
+            <div className="flex items-center gap-2">
+              <div className="w-6 h-6 rounded-md bg-blue-600 flex items-center justify-center">
+                <span className="text-white font-black text-[10px]">Y</span>
+              </div>
+              <span className="text-white font-bold text-sm tracking-tight">
+                Yassine<span className="text-blue-400 font-light">.H</span>
+              </span>
+            </div>
+            <p className="text-xs text-gray-600 font-medium">{t('tagline')}</p>
+          </div>
+
+          {/* Center: Language switcher */}
+          <div className="flex items-center gap-1 p-1 rounded-xl bg-white/4 border border-white/6">
+            {languages.map((lang) => (
               <button
+                key={lang.code}
                 onClick={() => handleLanguageChange(lang.code)}
-                className={`hover:text-white transition-colors duration-200 ${
-                  activeLocale === lang.code ? 'text-accent font-bold' : ''
+                className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all duration-200 cursor-pointer ${
+                  activeLocale === lang.code
+                    ? 'bg-blue-600 text-white'
+                    : 'text-gray-500 hover:text-gray-200'
                 }`}
               >
                 {lang.label}
               </button>
-              {idx < languages.length - 1 && <span className="text-gray-800">|</span>}
-            </div>
-          ))}
-        </div>
-
-        {/* Right: Socials & Copyright */}
-        <div className="flex flex-col items-center md:items-end gap-3 text-center md:text-right">
-          <div className="flex gap-4 text-gray-500">
-            <a 
-              href="https://github.com/yassin701" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="hover:text-white transition-colors duration-200"
-            >
-              <GithubIcon size={18} />
-            </a>
-            <a 
-              href="https://linkedin.com" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="hover:text-white transition-colors duration-200"
-            >
-              <LinkedinIcon size={18} />
-            </a>
-            <a 
-              href="mailto:yassine.hamdoune@example.com" 
-              className="hover:text-white transition-colors duration-200"
-            >
-              <Mail size={18} />
-            </a>
+            ))}
           </div>
-          <span className="text-[10px] text-gray-600 font-medium">
-            &copy; {currentYear} Yassine Hamdoune. {t('rights')}
-          </span>
-        </div>
 
+          {/* Right: Socials + Copyright */}
+          <div className="flex flex-col items-center md:items-end gap-3">
+            <div className="flex items-center gap-3">
+              {socials.map((social) => (
+                <a
+                  key={social.label}
+                  href={social.href}
+                  target={social.label !== 'Email' ? '_blank' : undefined}
+                  rel={social.label !== 'Email' ? 'noopener noreferrer' : undefined}
+                  aria-label={social.label}
+                  className="p-2 rounded-lg border border-white/6 bg-white/3 text-gray-500 hover:text-white hover:border-white/15 hover:-translate-y-0.5 transition-all duration-300 cursor-pointer"
+                >
+                  {social.icon}
+                </a>
+              ))}
+            </div>
+            <span className="text-[11px] text-gray-600 font-medium">
+              © {currentYear} Yassine Hamdoune · {t('rights')}
+            </span>
+          </div>
+
+        </div>
       </div>
     </footer>
   );

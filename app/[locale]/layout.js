@@ -1,12 +1,12 @@
-import { Geist, Geist_Mono, Cairo } from "next/font/google";
+import { Plus_Jakarta_Sans, Geist_Mono, Cairo } from "next/font/google";
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { routing } from '../../i18n/routing';
 import "../globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const jakarta = Plus_Jakarta_Sans({
+  variable: "--font-jakarta",
   subsets: ["latin"],
 });
 
@@ -61,7 +61,7 @@ export default async function LocaleLayout({ children, params }) {
     <html
       lang={locale}
       dir={isRtl ? "rtl" : "ltr"}
-      className={`${geistSans.variable} ${geistMono.variable} ${cairo.variable} h-full scroll-smooth antialiased`}
+      className={`${jakarta.variable} ${geistMono.variable} ${cairo.variable} h-full scroll-smooth antialiased`}
     >
       <body className={`min-h-full flex flex-col bg-dark-bg text-gray-100 ${isRtl ? 'font-arabic' : 'font-sans'}`}>
         <NextIntlClientProvider messages={messages}>
