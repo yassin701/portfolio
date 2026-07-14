@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
+import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 import { gsap } from 'gsap';
 import { ArrowRight, Download, Briefcase } from 'lucide-react';
@@ -14,6 +15,7 @@ export default function Hero() {
   const badgeRef = useRef(null);
   const contentRef = useRef(null);
   const ctaRef = useRef(null);
+  const avatarRef = useRef(null);
 
   useEffect(() => {
     // GSAP Entrance Animation
@@ -23,6 +25,10 @@ export default function Hero() {
       tl.fromTo(badgeRef.current, 
         { opacity: 0, y: 30, scale: 0.9 }, 
         { opacity: 1, y: 0, scale: 1, duration: 0.8 }
+      )
+      .fromTo(avatarRef.current,
+        { opacity: 0, scale: 0.8, y: 20 },
+        { opacity: 1, scale: 1, y: 0, duration: 0.8, delay: -0.6 }
       )
       .fromTo(titleRef.current, 
         { opacity: 0, y: 40 }, 
@@ -81,6 +87,23 @@ export default function Hero() {
           <span className="w-2 h-2 rounded-full bg-emerald-500 absolute" />
           <Briefcase size={12} className="ml-1" />
           {t('badge')}
+        </div>
+
+        {/* Profile Avatar */}
+        <div 
+          ref={avatarRef}
+          className="relative mb-6 group"
+        >
+          <div className="absolute inset-0 bg-primary/20 rounded-full blur-md group-hover:bg-primary/30 transition-all duration-300 animate-pulse" />
+          <div className="relative w-28 h-28 sm:w-32 sm:h-32 rounded-full overflow-hidden border-2 border-primary/40 shadow-2xl shadow-primary/30 group-hover:border-accent/60 transition-colors duration-300">
+            <Image
+              src="/images/profile.jpg"
+              alt="Yassine Hamdoune"
+              fill
+              className="object-cover group-hover:scale-105 transition-transform duration-500"
+              priority
+            />
+          </div>
         </div>
 
         {/* Dynamic Typography Title */}
