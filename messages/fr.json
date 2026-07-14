@@ -1,0 +1,116 @@
+{
+  "Header": {
+    "nav": {
+      "home": "Accueil",
+      "about": "À propos",
+      "skills": "Compétences",
+      "services": "Services",
+      "projects": "Projets",
+      "contact": "Contact"
+    },
+    "language": "Langue",
+    "cta": "Recrutez-moi"
+  },
+  "Hero": {
+    "badge": "Disponible pour Freelance & CDI",
+    "greeting": "Bonjour, je suis Yassine Hamdoune",
+    "title": "Création d'Applications Web Full Stack Haute Performance",
+    "subtitle": "Ingénieur logiciel spécialisé dans la conception d'expériences utilisateur haut de gamme, de systèmes backend robustes et de solutions cloud évolutives à l'aide de technologies modernes.",
+    "cta": {
+      "projects": "Voir les Projets",
+      "contact": "Contactez-moi"
+    }
+  },
+  "About": {
+    "title": "À Propos de Moi",
+    "subtitle": "Mon Histoire & Ma Mission",
+    "bio": "Je suis un développeur Full Stack passionné par la conception de solutions numériques efficaces, évolutives et haut de gamme. Au fil des ans, j'ai perfectionné mes compétences dans les frameworks frontend modernes et les architectures backend robustes pour combler le fossé entre des fonctionnalités complexes et de belles interfaces utilisateur.",
+    "mission": {
+      "title": "Ma Mission",
+      "text": "Construire des applications web propres, performantes et sécurisées qui résolvent des problèmes réels et offrent des expériences utilisateur exceptionnelles."
+    },
+    "goals": {
+      "title": "Mes Objectifs",
+      "text": "Apprendre et exploiter continuellement des technologies de pointe, contribuer à des projets open source à fort impact et aider les marques à développer leur présence numérique."
+    }
+  },
+  "Skills": {
+    "title": "Expertise Technique",
+    "subtitle": "Mon Stack Technique & Outils",
+    "frontend": "Développement Frontend",
+    "backend": "Backend & Cloud",
+    "database": "Systèmes de Base de Données",
+    "tools": "Outils de Développement"
+  },
+  "Services": {
+    "title": "Ce Que Je Fais",
+    "subtitle": "Services Que Je Propose pour Aider Votre Entreprise à Grandir",
+    "landingPages": {
+      "title": "Pages de Destination",
+      "desc": "Des pages de destination hautement convertibles et visuellement attrayantes conçues pour capter des prospects et transformer vos visiteurs en clients fidèles."
+    },
+    "businessWebsites": {
+      "title": "Sites Vitrines",
+      "desc": "Des sites d'entreprise modernes qui reflètent l'identité de votre marque, optimisés pour la vitesse et le référencement naturel (SEO)."
+    },
+    "ecommerce": {
+      "title": "E-Commerce",
+      "desc": "Boutiques en ligne sécurisées, rapides et riches en fonctionnalités conçues pour optimiser le tunnel d'achat et évoluer facilement."
+    },
+    "dashboards": {
+      "title": "Développement de Tableaux de Bord",
+      "desc": "Interfaces d'administration sur mesure et tableaux de bord analytiques dotés de visualisations de données en temps réel et de métriques claires."
+    },
+    "fullstackApps": {
+      "title": "Applications Web Full Stack",
+      "desc": "Applications sur mesure de bout en bout adaptées aux besoins de votre entreprise, de la structure de la base de données à l'interface."
+    },
+    "apiIntegration": {
+      "title": "Intégration d'API",
+      "desc": "Connexions fluides à des services tiers, des passerelles de paiement, des outils CRM ou des réseaux sociaux."
+    },
+    "perfOpt": {
+      "title": "Optimisation des Performances",
+      "desc": "Amélioration des signaux web essentiels (Web Vitals), de la vitesse de chargement, de la compression des images et du code pour des temps de chargement quasi instantanés."
+    }
+  },
+  "Projects": {
+    "title": "Projets Phares",
+    "subtitle": "Une Sélection de Mes Créations Récentes",
+    "smartjob": {
+      "title": "SmartJob AI",
+      "desc": "Une plateforme de suivi de candidatures alimentée par l'IA qui optimise les CV et génère des lettres de motivation personnalisées."
+    },
+    "gym": {
+      "title": "Gym Management System",
+      "desc": "Une plateforme SaaS complète permettant aux propriétaires de salles de sport de gérer les abonnements, la facturation et le planning."
+    },
+    "arabi": {
+      "title": "Arabi Shop",
+      "desc": "Une place de marché e-commerce premium localisée en arabe, avec un processus d'achat rapide et un suivi des commandes."
+    },
+    "buttons": {
+      "live": "Démo Live",
+      "code": "GitHub"
+    }
+  },
+  "Contact": {
+    "title": "Contactez-moi",
+    "subtitle": "Contactez-moi directement via l'un de ces canaux.",
+    "email": "E-mail",
+    "phone": "Téléphone",
+    "linkedin": "LinkedIn",
+    "github": "GitHub",
+    "copied": "Copié !",
+    "buttons": {
+      "email": "Envoyer un e-mail",
+      "phone": "Appeler",
+      "linkedin": "Se connecter",
+      "github": "Voir le profil"
+    }
+  },
+  "Footer": {
+    "rights": "Tous droits réservés.",
+    "tagline": "Création d'expériences web premium."
+  }
+}

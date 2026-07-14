@@ -1,0 +1,116 @@
+{
+  "Header": {
+    "nav": {
+      "home": "Home",
+      "about": "About",
+      "skills": "Skills",
+      "services": "Services",
+      "projects": "Projects",
+      "contact": "Contact"
+    },
+    "language": "Language",
+    "cta": "Hire Me"
+  },
+  "Hero": {
+    "badge": "Available for Freelance & Full-time Roles",
+    "greeting": "Hi, I'm Yassine Hamdoune",
+    "title": "Crafting High-Performance Full Stack Web Applications",
+    "subtitle": "A software engineer specializing in building premium user experiences, robust backend systems, and scalable cloud solutions using modern technologies.",
+    "cta": {
+      "projects": "View Projects",
+      "contact": "Contact Me"
+    }
+  },
+  "About": {
+    "title": "About Me",
+    "subtitle": "My Story & Mission",
+    "bio": "I am a passionate Full Stack Developer with a deep love for crafting efficient, scalable, and premium digital solutions. Over the years, I have honed my skills in modern frontend frameworks and robust backend architectures to bridge the gap between complex functionality and beautiful user interfaces.",
+    "mission": {
+      "title": "My Mission",
+      "text": "To build clean, performant, and secure web applications that solve real-world problems and provide outstanding user experiences."
+    },
+    "goals": {
+      "title": "My Goals",
+      "text": "To continuously learn and leverage cutting-edge technologies, contribute to impactful open-source projects, and help brands scale their digital presence."
+    }
+  },
+  "Skills": {
+    "title": "Technical Expertise",
+    "subtitle": "My Tech Stack & Tools",
+    "frontend": "Frontend Development",
+    "backend": "Backend & Cloud",
+    "database": "Database Systems",
+    "tools": "Developer Tools"
+  },
+  "Services": {
+    "title": "What I Do",
+    "subtitle": "Services I Offer to Help Your Business Grow",
+    "landingPages": {
+      "title": "Landing Pages",
+      "desc": "High-converting, visually stunning landing pages designed to capture leads and turn visitors into loyal clients."
+    },
+    "businessWebsites": {
+      "title": "Business Websites",
+      "desc": "Modern corporate sites that reflect your brand identity, optimized for performance and search engine ranking."
+    },
+    "ecommerce": {
+      "title": "E-Commerce",
+      "desc": "Secure, fast, and feature-rich online stores built to optimize customer checkout experiences and scale easily."
+    },
+    "dashboards": {
+      "title": "Dashboard Development",
+      "desc": "Custom admin interfaces and analytical dashboards featuring real-time data visualization and clean metrics."
+    },
+    "fullstackApps": {
+      "title": "Full Stack Web Apps",
+      "desc": "End-to-end bespoke applications tailored to your business needs, from architectural layout to database structure."
+    },
+    "apiIntegration": {
+      "title": "API Integration",
+      "desc": "Seamless connections to third-party services, payment gateways, CRM tools, or social media networks."
+    },
+    "perfOpt": {
+      "title": "Performance Optimization",
+      "desc": "Improving web vitals, speed, image compression, and code minification to ensure near-instant load times."
+    }
+  },
+  "Projects": {
+    "title": "Featured Work",
+    "subtitle": "A Selection of My Recent Creations",
+    "smartjob": {
+      "title": "SmartJob AI",
+      "desc": "An AI-powered job application tracking platform that optimizes resumes and autogenerates tailored cover letters."
+    },
+    "gym": {
+      "title": "Gym Management System",
+      "desc": "A comprehensive SaaS platform for gym owners to manage memberships, subscriptions, scheduling, and invoicing."
+    },
+    "arabi": {
+      "title": "Arabi Shop",
+      "desc": "A premium localized Arabic e-commerce marketplace featuring fast checkout, order tracking, and dynamic pricing."
+    },
+    "buttons": {
+      "live": "Live Demo",
+      "code": "GitHub"
+    }
+  },
+  "Contact": {
+    "title": "Get In Touch",
+    "subtitle": "Reach out directly through any of these channels.",
+    "email": "Email",
+    "phone": "Phone",
+    "linkedin": "LinkedIn",
+    "github": "GitHub",
+    "copied": "Copied!",
+    "buttons": {
+      "email": "Send Email",
+      "phone": "Call Now",
+      "linkedin": "Connect",
+      "github": "View Profile"
+    }
+  },
+  "Footer": {
+    "rights": "All Rights Reserved.",
+    "tagline": "Building premium web experiences."
+  }
+}
